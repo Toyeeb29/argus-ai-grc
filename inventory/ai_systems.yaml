@@ -60,11 +60,11 @@ ai_systems:
     interacts_with_humans: false
     generates_synthetic_content: false
     uses_personal_data: true
-    automated_decision_no_human_review: true   # gap — Art. 14 human oversight
+    automated_decision_no_human_review: false  # gap — Art. 14 human oversight
     prohibited_practice: none
     human_oversight:
-      documented: false
-      mechanism: null
+      documented: true
+      mechanism: "Credit analyst reviews all adverse decisions before issuance"
     data_governance:
       training_data_documented: true
       provenance_recorded: true
