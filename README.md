@@ -6,7 +6,8 @@ Argus takes a YAML inventory of an organization's AI systems, automatically clas
 
 ## Why this project exists
 
-GRC Engineer roles ask for Python-driven continuous control testing, automated evidence collection, and CI/CD-embedded compliance. AI Governance roles ask for AI inventories, EU AI Act risk tiering, framework crosswalks, model cards, and policy artifacts. Argus is one system that demonstrates both — compliance logic you can run, not just documents you can read.
+AI governance has a delivery problem. Regulations like the EU AI Act demand risk classification, human oversight, and audit evidence — but in most organizations that work lives in spreadsheets and policy PDFs that go stale the day they're written. Meanwhile, the tooling that transformed security compliance, continuous control testing, automated evidence collection, checks embedded in CI/CD — rarely gets applied to AI systems at all.
+Argus closes that gap: it treats the AI inventory, risk tiering, framework crosswalks, and model documentation as code-versioned, tested, and enforced on every change. Compliance logic you can run, not just documents you can read.
 
 ## What it does
 
