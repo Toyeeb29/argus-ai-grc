@@ -1,29 +1,33 @@
-# Case Study — How to Present Argus in Applications and Interviews
+# Case Study — Argus: Turning AI Governance from Documents into a Running System
 
-## The 30-second pitch
+## The problem
 
-"I built Argus, a compliance-as-code engine for AI governance. It takes a version-controlled inventory of AI systems, automatically risk-tiers each one under the EU AI Act, runs continuous control tests against a catalog crosswalked to NIST AI RMF and ISO 42001, and generates audit-ready evidence — model cards, a Statement of Applicability, a findings register with SHA-256 integrity hashes — plus a CI gate that blocks deployment when a high-risk system has a critical governance failure. Compliance goes from a quarterly spreadsheet to a merge-blocking check."
+Enforcement of the EU AI Act is here, and most organizations' AI governance still lives in spreadsheets: inventories go stale within weeks, control checks happen quarterly at best, risk classification depends on whoever fills in the form, and audit evidence is assembled in a scramble when the auditor's email arrives. The result is governance that describes the organization as it was, not as it is — precisely the failure regulators penalize.
 
-## STAR story for interviews
+Security compliance solved this a decade ago with automation: continuous control monitoring, evidence pipelines, and checks wired into delivery. AI governance has the same shape of problem and almost none of the same tooling.
 
-**Situation.** Organizations face EU AI Act enforcement with AI governance run in spreadsheets: inventories go stale, control checks are manual and quarterly, and evidence is assembled in a panic before audits.
+## The approach
 
-**Task.** Demonstrate that AI governance can be run like modern security engineering — continuous, automated, and embedded in the delivery pipeline — while staying legally precise about provider/deployer roles, Annex III scope, and framework crosswalks.
+Argus applies compliance-as-code discipline to AI governance end to end:
 
-**Action.** Designed a YAML schema capturing the governance-relevant attributes of an AI system; implemented an EU AI Act tiering engine (including fail-closed handling and the Annex III fraud carve-out); built a declarative policy engine with conditional controls; automated evidence packs with hash manifests; generated model cards, SoA, and an executive dashboard; wired a GitHub Actions gate that fails builds on critical findings; covered the logic with 12 unit tests.
+**Inventory as the source of truth.** Every AI system is a version-controlled YAML record capturing the attributes governance actually turns on: purpose, domain, provider/deployer role, personal-data use, autonomy, oversight, monitoring, third-party dependencies. Any change is a reviewable diff.
 
-**Result.** A governance assessment that runs in seconds on every pull request instead of quarterly. In the demo inventory it correctly tiers 5 systems, surfaces 9 findings including two critical (a credit scorer making fully automated adverse decisions with no documented human oversight) and blocks it in CI with exit code 1 — precisely the failure mode Art. 14 / GDPR Art. 22 exist to prevent.
+**Classification as law, not judgment calls.** The tiering engine implements the EU AI Act's actual structure — Art. 5 prohibited practices, Annex III high-risk domains, Art. 50 transparency triggers — including the details that catch people out: the engine fails closed on unrecognized inputs, and it encodes the Annex III(5)(b) carve-out that exempts financial-fraud detection from the credit-scoring high-risk category. Getting that carve-out right requires reading the regulation itself, not summaries of it.
 
-## Anticipated interview questions
+**One catalog, three frameworks.** Each control is defined once as a machine-testable predicate and crosswalked to the EU AI Act article, NIST AI RMF subcategory, and ISO/IEC 42001 Annex A control it satisfies. A single finding automatically cites all three — what the regulator, the risk framework, and the auditor each need to see.
 
-**"Why fail-closed tiering?"** A governance system that defaults to 'minimal risk' on bad input silently under-governs. Argus classifies unknown prohibited-practice values as prohibited — the reviewer must resolve it. Same philosophy as deny-by-default firewall rules.
+**Enforcement where change happens.** A GitHub Actions gate re-runs the full assessment on every pull request touching the inventory, catalog, or engine, and fails the build on critical findings. Governance stops being a calendar event and becomes a merge check.
 
-**"Isn't checking YAML fields self-attestation?"** Yes — deliberately, for the demo layer. The engine's check interface (`equals`/`exists`/`gte` on a resolved path) is designed so field sources can be swapped for live collectors: an AWS Config query for logging status, an MLflow API call for drift-monitor presence. The roadmap names those; the architecture already supports them.
+**Evidence that proves itself.** Every run emits an assessment report, findings register, ISO 42001-style Statement of Applicability, and per-system model cards — sealed with a SHA-256 manifest so no artifact can be silently altered after generation.
 
-**"How would this scale to 500 models?"** The inventory becomes an API-backed registry rather than one file; the engine already treats records as dicts, so the swap is an I/O change. Tiering and controls are O(n) and stateless — trivially parallelizable. The real scaling problem is organizational (ownership hygiene), which the schema addresses with mandatory owner fields.
+## The result
 
-**"What did you get wrong initially?"** Worth answering honestly with something real, e.g.: treating the fraud detector as high-risk until reading Annex III(5)(b)'s carve-out closely — a good example of why governance engineers must read primary sources, not vendor summaries.
+On the demonstration inventory of five systems, Argus correctly tiers each one (including the fraud-detection carve-out), surfaces nine findings, and blocks the build over two critical ones: a credit-scoring model issuing fully automated adverse decisions with no documented human oversight — the exact failure mode Art. 14 and GDPR Art. 22 exist to prevent. The remediation shipped as a reviewed pull request: oversight documented, automated adverse decisions disabled, gate green, merged. The full cycle — violation caught, fix reviewed, evidence regenerated — is visible in the repository's history.
 
-## Where to publish
+## An honest engineering note
 
-Push to GitHub with the Actions workflow enabled so the governance gate visibly runs (and fails) on PRs — a red X on a demo PR titled "Deploy credit scorer without human review" is a screenshot that does more than any bullet point. Post the dashboard screenshot + 30-second pitch on LinkedIn; write the crosswalk doc up as an article.
+The first version of the gate's unit test hard-coded the assumption that the demo credit scorer was broken; the remediation PR made that test fail. It was a data-coupled test — verifying fixture state instead of logic. It was refactored to assert against a synthetic non-compliant system, which is the correct design: tests should verify behavior, not depend on demo data staying broken. The bug and the fix are both in the commit history, deliberately.
+
+## Design boundaries and next steps
+
+The demo layer evaluates declared inventory attributes — appropriate for demonstrating the architecture, and honest about being self-attestation. The check interface (equals/exists/gte against a resolved path) was designed so those inputs swap for live collectors without touching the engine: AWS Config for logging state, MLflow for drift-monitor presence, GRC platform APIs (Vanta/Drata) for control status. Also on the roadmap: OSCAL export, GPAI model obligations (Art. 51+), and an intake questionnaire that writes inventory records directly.
