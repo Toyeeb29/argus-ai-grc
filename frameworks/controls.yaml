@@ -1,0 +1,178 @@
+# =============================================================================
+# Argus Control Catalog — machine-testable AI governance controls,
+# crosswalked to EU AI Act, NIST AI RMF 1.0, and ISO/IEC 42001:2023 Annex A.
+#
+# check.field  : dotted path into an inventory record
+# check.equals : expected value for the control to PASS
+# applies_to   : risk tiers the control applies to (per computed EU AI Act tier)
+# severity     : finding severity when the control FAILS
+# =============================================================================
+
+controls:
+  - id: AGC-01
+    name: AI system registered in inventory
+    description: Every AI system must have a complete inventory record before deployment.
+    frameworks:
+      eu_ai_act: "Art. 16 (provider obligations), Art. 26 (deployer obligations)"
+      nist_ai_rmf: "GOVERN 1.6, MAP 1.1"
+      iso_42001: "A.4.2 (AI system inventory)"
+    applies_to: [prohibited, high, limited, minimal]
+    severity: critical
+    check: {field: id, exists: true}
+
+  - id: AGC-02
+    name: Documented human oversight mechanism
+    description: High-risk systems require documented, effective human oversight.
+    frameworks:
+      eu_ai_act: "Art. 14 (human oversight)"
+      nist_ai_rmf: "GOVERN 3.2, MANAGE 2.4"
+      iso_42001: "A.9.2 (human oversight of AI systems)"
+    applies_to: [high]
+    severity: critical
+    check: {field: human_oversight.documented, equals: true}
+
+  - id: AGC-03
+    name: No fully automated adverse decisions
+    description: Decisions with legal/significant effect must include human review.
+    frameworks:
+      eu_ai_act: "Art. 14; GDPR Art. 22"
+      nist_ai_rmf: "MANAGE 2.4"
+      iso_42001: "A.9.2"
+    applies_to: [high]
+    severity: critical
+    check: {field: automated_decision_no_human_review, equals: false}
+
+  - id: AGC-04
+    name: Training data governance documented
+    description: Training data sources, provenance, and suitability must be documented.
+    frameworks:
+      eu_ai_act: "Art. 10 (data and data governance)"
+      nist_ai_rmf: "MAP 2.1, MEASURE 2.2"
+      iso_42001: "A.7.2, A.7.3 (data for AI systems)"
+    applies_to: [high]
+    severity: high
+    check: {field: data_governance.training_data_documented, equals: true}
+
+  - id: AGC-05
+    name: Bias / fairness evaluation completed
+    description: A documented bias evaluation must exist and be less than 12 months old.
+    frameworks:
+      eu_ai_act: "Art. 10(2)(f), Art. 15"
+      nist_ai_rmf: "MEASURE 2.11 (fairness and bias)"
+      iso_42001: "A.7.4 (assessment of AI system impact)"
+    applies_to: [high]
+    severity: high
+    check: {field: data_governance.bias_evaluation_completed, equals: true}
+
+  - id: AGC-06
+    name: AI transparency notice to users
+    description: Users must be informed they are interacting with an AI system.
+    frameworks:
+      eu_ai_act: "Art. 50 (transparency obligations)"
+      nist_ai_rmf: "GOVERN 4.2, MAP 5.2"
+      iso_42001: "A.8.2 (system documentation & info for users)"
+    applies_to: [high, limited]
+    severity: high
+    check: {field: transparency.users_notified_of_ai, equals: true}
+
+  - id: AGC-07
+    name: Model card published
+    description: A current model card must be published for the system.
+    frameworks:
+      eu_ai_act: "Art. 11 + Annex IV (technical documentation)"
+      nist_ai_rmf: "MAP 3.4, GOVERN 4.2"
+      iso_42001: "A.8.2, A.8.3"
+    applies_to: [high, limited]
+    severity: medium
+    check: {field: transparency.model_card_published, equals: true}
+
+  - id: AGC-08
+    name: Technical documentation maintained
+    description: Technical documentation per Annex IV must exist and be current.
+    frameworks:
+      eu_ai_act: "Art. 11, Annex IV"
+      nist_ai_rmf: "MAP 3.4"
+      iso_42001: "A.6.2.7 (AI system technical documentation)"
+    applies_to: [high]
+    severity: high
+    check: {field: documentation.technical_documentation, equals: true}
+
+  - id: AGC-09
+    name: Logging and traceability enabled
+    description: Automatic event logging must be enabled for traceability.
+    frameworks:
+      eu_ai_act: "Art. 12 (record-keeping), Art. 19"
+      nist_ai_rmf: "MEASURE 2.1, MANAGE 4.1"
+      iso_42001: "A.6.2.8 (event logging)"
+    applies_to: [high, limited]
+    severity: high
+    check: {field: monitoring.logging_enabled, equals: true}
+
+  - id: AGC-10
+    name: Log retention >= 6 months
+    description: Logs retained for a period appropriate to the system's purpose (min 6 months).
+    frameworks:
+      eu_ai_act: "Art. 19 (automatically generated logs)"
+      nist_ai_rmf: "MANAGE 4.1"
+      iso_42001: "A.6.2.8"
+    applies_to: [high]
+    severity: medium
+    check: {field: monitoring.log_retention_months, gte: 6}
+
+  - id: AGC-11
+    name: Post-market drift monitoring
+    description: Production systems must have performance/drift monitoring in place.
+    frameworks:
+      eu_ai_act: "Art. 72 (post-market monitoring)"
+      nist_ai_rmf: "MEASURE 3.1, MANAGE 4.1"
+      iso_42001: "A.6.2.6 (AI system operation and monitoring)"
+    applies_to: [high]
+    severity: high
+    check: {field: monitoring.drift_monitoring, equals: true}
+
+  - id: AGC-12
+    name: AI incident response plan
+    description: A documented incident response plan covering AI-specific failure modes.
+    frameworks:
+      eu_ai_act: "Art. 73 (serious incident reporting)"
+      nist_ai_rmf: "MANAGE 4.3, GOVERN 6.2"
+      iso_42001: "A.10.4 (incident response)"
+    applies_to: [high, limited]
+    severity: high
+    check: {field: monitoring.incident_response_plan, equals: true}
+
+  - id: AGC-13
+    name: Vendor AI risk assessment completed
+    description: Third-party/vendor AI models require a completed vendor risk assessment.
+    frameworks:
+      eu_ai_act: "Art. 25 (responsibilities along the AI value chain)"
+      nist_ai_rmf: "GOVERN 6.1, MAP 4.1 (third-party risk)"
+      iso_42001: "A.10.2, A.10.3 (suppliers and third parties)"
+    applies_to: [high, limited, minimal]
+    severity: high
+    condition: {field: third_party.is_vendor_model, equals: true}
+    check: {field: third_party.vendor_risk_assessment, equals: completed}
+
+  - id: AGC-14
+    name: DPIA completed for personal-data systems
+    description: Systems processing personal data require a completed DPIA.
+    frameworks:
+      eu_ai_act: "Art. 27 (fundamental rights impact assessment)"
+      nist_ai_rmf: "MAP 3.1, MEASURE 2.10 (privacy)"
+      iso_42001: "A.7.4"
+    applies_to: [high, limited]
+    severity: high
+    condition: {field: uses_personal_data, equals: true}
+    check: {field: documentation.dpia_completed, equals: true}
+
+  - id: AGC-15
+    name: Registered in EU high-risk database
+    description: Providers of Annex III high-risk systems must register in the EU database.
+    frameworks:
+      eu_ai_act: "Art. 49, Art. 71 (EU database registration)"
+      nist_ai_rmf: "GOVERN 1.1 (legal & regulatory requirements)"
+      iso_42001: "A.2.3 (alignment with obligations)"
+    applies_to: [high]
+    severity: high
+    condition: {field: role, equals: provider}
+    check: {field: documentation.registered_in_eu_database, equals: true}

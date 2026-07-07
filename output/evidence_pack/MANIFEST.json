@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-07-07T01:39:20.308931+00:00",
+  "algorithm": "SHA-256",
+  "files": {
+    "assessment_report.json": "07f1167a2a9f22481a26521cd708f24eba9e9627f3c7e69fa3ce989420bdfc47",
+    "findings_register.csv": "e258dc09986a5ea472b8e3072ed25c9352c1661276aa91bc2177356c485ea184",
+    "statement_of_applicability.md": "90aafe4cf4205a9a2096cd05bcb84e7b369bd59badbbeb1036b7f3b1ea17aa6e"
+  }
+}

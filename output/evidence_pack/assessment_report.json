@@ -1,0 +1,754 @@
+{
+  "generated_at": "2026-07-07T01:39:20.229402+00:00",
+  "framework_versions": {
+    "eu_ai_act": "Regulation (EU) 2024/1689",
+    "nist_ai_rmf": "AI RMF 1.0 (NIST AI 100-1)",
+    "iso_42001": "ISO/IEC 42001:2023"
+  },
+  "summary": {
+    "systems_assessed": 5,
+    "tier_distribution": {
+      "high": 2,
+      "limited": 2,
+      "minimal": 1
+    },
+    "total_findings": 9,
+    "critical_findings": 2,
+    "avg_compliance_score": 84,
+    "systems_with_critical_findings": [
+      "AIS-002"
+    ]
+  },
+  "assessments": [
+    {
+      "system_id": "AIS-001",
+      "system_name": "TalentRank Resume Screener",
+      "owner": "people-ops@acme.example",
+      "lifecycle_stage": "production",
+      "risk_tier": "high",
+      "tier_rationale": "High-risk under Annex III(4) \u2014 employment, worker management, access to self-employment.",
+      "controls_evaluated": 14,
+      "controls_passed": 13,
+      "compliance_score": 93,
+      "findings": [
+        {
+          "control_id": "AGC-15",
+          "name": "Registered in EU high-risk database",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 49, Art. 71 (EU database registration)",
+            "nist_ai_rmf": "GOVERN 1.1 (legal & regulatory requirements)",
+            "iso_42001": "A.2.3 (alignment with obligations)"
+          },
+          "remediation": "Remediate to satisfy Art. 49, Art. 71 (EU database registration); see also NIST AI RMF GOVERN 1.1 (legal & regulatory requirements) and ISO/IEC 42001 A.2.3 (alignment with obligations)."
+        }
+      ],
+      "results": [
+        {
+          "control_id": "AGC-01",
+          "name": "AI system registered in inventory",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 16 (provider obligations), Art. 26 (deployer obligations)",
+            "nist_ai_rmf": "GOVERN 1.6, MAP 1.1",
+            "iso_42001": "A.4.2 (AI system inventory)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-02",
+          "name": "Documented human oversight mechanism",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 14 (human oversight)",
+            "nist_ai_rmf": "GOVERN 3.2, MANAGE 2.4",
+            "iso_42001": "A.9.2 (human oversight of AI systems)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-03",
+          "name": "No fully automated adverse decisions",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 14; GDPR Art. 22",
+            "nist_ai_rmf": "MANAGE 2.4",
+            "iso_42001": "A.9.2"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-04",
+          "name": "Training data governance documented",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 10 (data and data governance)",
+            "nist_ai_rmf": "MAP 2.1, MEASURE 2.2",
+            "iso_42001": "A.7.2, A.7.3 (data for AI systems)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-05",
+          "name": "Bias / fairness evaluation completed",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 10(2)(f), Art. 15",
+            "nist_ai_rmf": "MEASURE 2.11 (fairness and bias)",
+            "iso_42001": "A.7.4 (assessment of AI system impact)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-06",
+          "name": "AI transparency notice to users",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 50 (transparency obligations)",
+            "nist_ai_rmf": "GOVERN 4.2, MAP 5.2",
+            "iso_42001": "A.8.2 (system documentation & info for users)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-07",
+          "name": "Model card published",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 11 + Annex IV (technical documentation)",
+            "nist_ai_rmf": "MAP 3.4, GOVERN 4.2",
+            "iso_42001": "A.8.2, A.8.3"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-08",
+          "name": "Technical documentation maintained",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 11, Annex IV",
+            "nist_ai_rmf": "MAP 3.4",
+            "iso_42001": "A.6.2.7 (AI system technical documentation)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-09",
+          "name": "Logging and traceability enabled",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 12 (record-keeping), Art. 19",
+            "nist_ai_rmf": "MEASURE 2.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.8 (event logging)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-10",
+          "name": "Log retention >= 6 months",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 19 (automatically generated logs)",
+            "nist_ai_rmf": "MANAGE 4.1",
+            "iso_42001": "A.6.2.8"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-11",
+          "name": "Post-market drift monitoring",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 72 (post-market monitoring)",
+            "nist_ai_rmf": "MEASURE 3.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.6 (AI system operation and monitoring)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-12",
+          "name": "AI incident response plan",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 73 (serious incident reporting)",
+            "nist_ai_rmf": "MANAGE 4.3, GOVERN 6.2",
+            "iso_42001": "A.10.4 (incident response)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-13",
+          "name": "Vendor AI risk assessment completed",
+          "status": "not_applicable",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 25 (responsibilities along the AI value chain)",
+            "nist_ai_rmf": "GOVERN 6.1, MAP 4.1 (third-party risk)",
+            "iso_42001": "A.10.2, A.10.3 (suppliers and third parties)"
+          }
+        },
+        {
+          "control_id": "AGC-14",
+          "name": "DPIA completed for personal-data systems",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 27 (fundamental rights impact assessment)",
+            "nist_ai_rmf": "MAP 3.1, MEASURE 2.10 (privacy)",
+            "iso_42001": "A.7.4"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-15",
+          "name": "Registered in EU high-risk database",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 49, Art. 71 (EU database registration)",
+            "nist_ai_rmf": "GOVERN 1.1 (legal & regulatory requirements)",
+            "iso_42001": "A.2.3 (alignment with obligations)"
+          },
+          "remediation": "Remediate to satisfy Art. 49, Art. 71 (EU database registration); see also NIST AI RMF GOVERN 1.1 (legal & regulatory requirements) and ISO/IEC 42001 A.2.3 (alignment with obligations)."
+        }
+      ]
+    },
+    {
+      "system_id": "AIS-002",
+      "system_name": "CreditSense Loan Scorer",
+      "owner": "risk-analytics@acme.example",
+      "lifecycle_stage": "production",
+      "risk_tier": "high",
+      "tier_rationale": "High-risk under Annex III(5)(b) \u2014 creditworthiness evaluation of natural persons.",
+      "controls_evaluated": 14,
+      "controls_passed": 8,
+      "compliance_score": 57,
+      "findings": [
+        {
+          "control_id": "AGC-02",
+          "name": "Documented human oversight mechanism",
+          "status": "fail",
+          "severity": "critical",
+          "frameworks": {
+            "eu_ai_act": "Art. 14 (human oversight)",
+            "nist_ai_rmf": "GOVERN 3.2, MANAGE 2.4",
+            "iso_42001": "A.9.2 (human oversight of AI systems)"
+          },
+          "remediation": "Remediate to satisfy Art. 14 (human oversight); see also NIST AI RMF GOVERN 3.2, MANAGE 2.4 and ISO/IEC 42001 A.9.2 (human oversight of AI systems)."
+        },
+        {
+          "control_id": "AGC-03",
+          "name": "No fully automated adverse decisions",
+          "status": "fail",
+          "severity": "critical",
+          "frameworks": {
+            "eu_ai_act": "Art. 14; GDPR Art. 22",
+            "nist_ai_rmf": "MANAGE 2.4",
+            "iso_42001": "A.9.2"
+          },
+          "remediation": "Remediate to satisfy Art. 14; GDPR Art. 22; see also NIST AI RMF MANAGE 2.4 and ISO/IEC 42001 A.9.2."
+        },
+        {
+          "control_id": "AGC-05",
+          "name": "Bias / fairness evaluation completed",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 10(2)(f), Art. 15",
+            "nist_ai_rmf": "MEASURE 2.11 (fairness and bias)",
+            "iso_42001": "A.7.4 (assessment of AI system impact)"
+          },
+          "remediation": "Remediate to satisfy Art. 10(2)(f), Art. 15; see also NIST AI RMF MEASURE 2.11 (fairness and bias) and ISO/IEC 42001 A.7.4 (assessment of AI system impact)."
+        },
+        {
+          "control_id": "AGC-11",
+          "name": "Post-market drift monitoring",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 72 (post-market monitoring)",
+            "nist_ai_rmf": "MEASURE 3.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.6 (AI system operation and monitoring)"
+          },
+          "remediation": "Remediate to satisfy Art. 72 (post-market monitoring); see also NIST AI RMF MEASURE 3.1, MANAGE 4.1 and ISO/IEC 42001 A.6.2.6 (AI system operation and monitoring)."
+        },
+        {
+          "control_id": "AGC-15",
+          "name": "Registered in EU high-risk database",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 49, Art. 71 (EU database registration)",
+            "nist_ai_rmf": "GOVERN 1.1 (legal & regulatory requirements)",
+            "iso_42001": "A.2.3 (alignment with obligations)"
+          },
+          "remediation": "Remediate to satisfy Art. 49, Art. 71 (EU database registration); see also NIST AI RMF GOVERN 1.1 (legal & regulatory requirements) and ISO/IEC 42001 A.2.3 (alignment with obligations)."
+        },
+        {
+          "control_id": "AGC-07",
+          "name": "Model card published",
+          "status": "fail",
+          "severity": "medium",
+          "frameworks": {
+            "eu_ai_act": "Art. 11 + Annex IV (technical documentation)",
+            "nist_ai_rmf": "MAP 3.4, GOVERN 4.2",
+            "iso_42001": "A.8.2, A.8.3"
+          },
+          "remediation": "Remediate to satisfy Art. 11 + Annex IV (technical documentation); see also NIST AI RMF MAP 3.4, GOVERN 4.2 and ISO/IEC 42001 A.8.2, A.8.3."
+        }
+      ],
+      "results": [
+        {
+          "control_id": "AGC-01",
+          "name": "AI system registered in inventory",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 16 (provider obligations), Art. 26 (deployer obligations)",
+            "nist_ai_rmf": "GOVERN 1.6, MAP 1.1",
+            "iso_42001": "A.4.2 (AI system inventory)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-02",
+          "name": "Documented human oversight mechanism",
+          "status": "fail",
+          "severity": "critical",
+          "frameworks": {
+            "eu_ai_act": "Art. 14 (human oversight)",
+            "nist_ai_rmf": "GOVERN 3.2, MANAGE 2.4",
+            "iso_42001": "A.9.2 (human oversight of AI systems)"
+          },
+          "remediation": "Remediate to satisfy Art. 14 (human oversight); see also NIST AI RMF GOVERN 3.2, MANAGE 2.4 and ISO/IEC 42001 A.9.2 (human oversight of AI systems)."
+        },
+        {
+          "control_id": "AGC-03",
+          "name": "No fully automated adverse decisions",
+          "status": "fail",
+          "severity": "critical",
+          "frameworks": {
+            "eu_ai_act": "Art. 14; GDPR Art. 22",
+            "nist_ai_rmf": "MANAGE 2.4",
+            "iso_42001": "A.9.2"
+          },
+          "remediation": "Remediate to satisfy Art. 14; GDPR Art. 22; see also NIST AI RMF MANAGE 2.4 and ISO/IEC 42001 A.9.2."
+        },
+        {
+          "control_id": "AGC-04",
+          "name": "Training data governance documented",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 10 (data and data governance)",
+            "nist_ai_rmf": "MAP 2.1, MEASURE 2.2",
+            "iso_42001": "A.7.2, A.7.3 (data for AI systems)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-05",
+          "name": "Bias / fairness evaluation completed",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 10(2)(f), Art. 15",
+            "nist_ai_rmf": "MEASURE 2.11 (fairness and bias)",
+            "iso_42001": "A.7.4 (assessment of AI system impact)"
+          },
+          "remediation": "Remediate to satisfy Art. 10(2)(f), Art. 15; see also NIST AI RMF MEASURE 2.11 (fairness and bias) and ISO/IEC 42001 A.7.4 (assessment of AI system impact)."
+        },
+        {
+          "control_id": "AGC-06",
+          "name": "AI transparency notice to users",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 50 (transparency obligations)",
+            "nist_ai_rmf": "GOVERN 4.2, MAP 5.2",
+            "iso_42001": "A.8.2 (system documentation & info for users)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-07",
+          "name": "Model card published",
+          "status": "fail",
+          "severity": "medium",
+          "frameworks": {
+            "eu_ai_act": "Art. 11 + Annex IV (technical documentation)",
+            "nist_ai_rmf": "MAP 3.4, GOVERN 4.2",
+            "iso_42001": "A.8.2, A.8.3"
+          },
+          "remediation": "Remediate to satisfy Art. 11 + Annex IV (technical documentation); see also NIST AI RMF MAP 3.4, GOVERN 4.2 and ISO/IEC 42001 A.8.2, A.8.3."
+        },
+        {
+          "control_id": "AGC-08",
+          "name": "Technical documentation maintained",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 11, Annex IV",
+            "nist_ai_rmf": "MAP 3.4",
+            "iso_42001": "A.6.2.7 (AI system technical documentation)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-09",
+          "name": "Logging and traceability enabled",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 12 (record-keeping), Art. 19",
+            "nist_ai_rmf": "MEASURE 2.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.8 (event logging)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-10",
+          "name": "Log retention >= 6 months",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 19 (automatically generated logs)",
+            "nist_ai_rmf": "MANAGE 4.1",
+            "iso_42001": "A.6.2.8"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-11",
+          "name": "Post-market drift monitoring",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 72 (post-market monitoring)",
+            "nist_ai_rmf": "MEASURE 3.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.6 (AI system operation and monitoring)"
+          },
+          "remediation": "Remediate to satisfy Art. 72 (post-market monitoring); see also NIST AI RMF MEASURE 3.1, MANAGE 4.1 and ISO/IEC 42001 A.6.2.6 (AI system operation and monitoring)."
+        },
+        {
+          "control_id": "AGC-12",
+          "name": "AI incident response plan",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 73 (serious incident reporting)",
+            "nist_ai_rmf": "MANAGE 4.3, GOVERN 6.2",
+            "iso_42001": "A.10.4 (incident response)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-13",
+          "name": "Vendor AI risk assessment completed",
+          "status": "not_applicable",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 25 (responsibilities along the AI value chain)",
+            "nist_ai_rmf": "GOVERN 6.1, MAP 4.1 (third-party risk)",
+            "iso_42001": "A.10.2, A.10.3 (suppliers and third parties)"
+          }
+        },
+        {
+          "control_id": "AGC-14",
+          "name": "DPIA completed for personal-data systems",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 27 (fundamental rights impact assessment)",
+            "nist_ai_rmf": "MAP 3.1, MEASURE 2.10 (privacy)",
+            "iso_42001": "A.7.4"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-15",
+          "name": "Registered in EU high-risk database",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 49, Art. 71 (EU database registration)",
+            "nist_ai_rmf": "GOVERN 1.1 (legal & regulatory requirements)",
+            "iso_42001": "A.2.3 (alignment with obligations)"
+          },
+          "remediation": "Remediate to satisfy Art. 49, Art. 71 (EU database registration); see also NIST AI RMF GOVERN 1.1 (legal & regulatory requirements) and ISO/IEC 42001 A.2.3 (alignment with obligations)."
+        }
+      ]
+    },
+    {
+      "system_id": "AIS-003",
+      "system_name": "SupportGenie Customer Chatbot",
+      "owner": "cx-platform@acme.example",
+      "lifecycle_stage": "production",
+      "risk_tier": "limited",
+      "tier_rationale": "Art. 50 transparency obligations: system interacts with natural persons and/or generates synthetic content.",
+      "controls_evaluated": 7,
+      "controls_passed": 6,
+      "compliance_score": 86,
+      "findings": [
+        {
+          "control_id": "AGC-06",
+          "name": "AI transparency notice to users",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 50 (transparency obligations)",
+            "nist_ai_rmf": "GOVERN 4.2, MAP 5.2",
+            "iso_42001": "A.8.2 (system documentation & info for users)"
+          },
+          "remediation": "Remediate to satisfy Art. 50 (transparency obligations); see also NIST AI RMF GOVERN 4.2, MAP 5.2 and ISO/IEC 42001 A.8.2 (system documentation & info for users)."
+        }
+      ],
+      "results": [
+        {
+          "control_id": "AGC-01",
+          "name": "AI system registered in inventory",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 16 (provider obligations), Art. 26 (deployer obligations)",
+            "nist_ai_rmf": "GOVERN 1.6, MAP 1.1",
+            "iso_42001": "A.4.2 (AI system inventory)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-06",
+          "name": "AI transparency notice to users",
+          "status": "fail",
+          "severity": "high",
+          "frameworks": {
+            "eu_ai_act": "Art. 50 (transparency obligations)",
+            "nist_ai_rmf": "GOVERN 4.2, MAP 5.2",
+            "iso_42001": "A.8.2 (system documentation & info for users)"
+          },
+          "remediation": "Remediate to satisfy Art. 50 (transparency obligations); see also NIST AI RMF GOVERN 4.2, MAP 5.2 and ISO/IEC 42001 A.8.2 (system documentation & info for users)."
+        },
+        {
+          "control_id": "AGC-07",
+          "name": "Model card published",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 11 + Annex IV (technical documentation)",
+            "nist_ai_rmf": "MAP 3.4, GOVERN 4.2",
+            "iso_42001": "A.8.2, A.8.3"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-09",
+          "name": "Logging and traceability enabled",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 12 (record-keeping), Art. 19",
+            "nist_ai_rmf": "MEASURE 2.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.8 (event logging)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-12",
+          "name": "AI incident response plan",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 73 (serious incident reporting)",
+            "nist_ai_rmf": "MANAGE 4.3, GOVERN 6.2",
+            "iso_42001": "A.10.4 (incident response)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-13",
+          "name": "Vendor AI risk assessment completed",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 25 (responsibilities along the AI value chain)",
+            "nist_ai_rmf": "GOVERN 6.1, MAP 4.1 (third-party risk)",
+            "iso_42001": "A.10.2, A.10.3 (suppliers and third parties)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-14",
+          "name": "DPIA completed for personal-data systems",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 27 (fundamental rights impact assessment)",
+            "nist_ai_rmf": "MAP 3.1, MEASURE 2.10 (privacy)",
+            "iso_42001": "A.7.4"
+          },
+          "remediation": null
+        }
+      ]
+    },
+    {
+      "system_id": "AIS-004",
+      "system_name": "FraudNet Transaction Monitor",
+      "owner": "fraud-eng@acme.example",
+      "lifecycle_stage": "production",
+      "risk_tier": "minimal",
+      "tier_rationale": "No Art. 5, Annex III, or Art. 50 triggers identified. Minimal-risk tier; voluntary codes of conduct encouraged (Art. 95).",
+      "controls_evaluated": 1,
+      "controls_passed": 1,
+      "compliance_score": 100,
+      "findings": [],
+      "results": [
+        {
+          "control_id": "AGC-01",
+          "name": "AI system registered in inventory",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 16 (provider obligations), Art. 26 (deployer obligations)",
+            "nist_ai_rmf": "GOVERN 1.6, MAP 1.1",
+            "iso_42001": "A.4.2 (AI system inventory)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-13",
+          "name": "Vendor AI risk assessment completed",
+          "status": "not_applicable",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 25 (responsibilities along the AI value chain)",
+            "nist_ai_rmf": "GOVERN 6.1, MAP 4.1 (third-party risk)",
+            "iso_42001": "A.10.2, A.10.3 (suppliers and third parties)"
+          }
+        }
+      ]
+    },
+    {
+      "system_id": "AIS-005",
+      "system_name": "DevPilot Internal Code Assistant",
+      "owner": "platform-eng@acme.example",
+      "lifecycle_stage": "pilot",
+      "risk_tier": "limited",
+      "tier_rationale": "Art. 50 transparency obligations: system interacts with natural persons and/or generates synthetic content.",
+      "controls_evaluated": 6,
+      "controls_passed": 5,
+      "compliance_score": 83,
+      "findings": [
+        {
+          "control_id": "AGC-07",
+          "name": "Model card published",
+          "status": "fail",
+          "severity": "medium",
+          "frameworks": {
+            "eu_ai_act": "Art. 11 + Annex IV (technical documentation)",
+            "nist_ai_rmf": "MAP 3.4, GOVERN 4.2",
+            "iso_42001": "A.8.2, A.8.3"
+          },
+          "remediation": "Remediate to satisfy Art. 11 + Annex IV (technical documentation); see also NIST AI RMF MAP 3.4, GOVERN 4.2 and ISO/IEC 42001 A.8.2, A.8.3."
+        }
+      ],
+      "results": [
+        {
+          "control_id": "AGC-01",
+          "name": "AI system registered in inventory",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 16 (provider obligations), Art. 26 (deployer obligations)",
+            "nist_ai_rmf": "GOVERN 1.6, MAP 1.1",
+            "iso_42001": "A.4.2 (AI system inventory)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-06",
+          "name": "AI transparency notice to users",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 50 (transparency obligations)",
+            "nist_ai_rmf": "GOVERN 4.2, MAP 5.2",
+            "iso_42001": "A.8.2 (system documentation & info for users)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-07",
+          "name": "Model card published",
+          "status": "fail",
+          "severity": "medium",
+          "frameworks": {
+            "eu_ai_act": "Art. 11 + Annex IV (technical documentation)",
+            "nist_ai_rmf": "MAP 3.4, GOVERN 4.2",
+            "iso_42001": "A.8.2, A.8.3"
+          },
+          "remediation": "Remediate to satisfy Art. 11 + Annex IV (technical documentation); see also NIST AI RMF MAP 3.4, GOVERN 4.2 and ISO/IEC 42001 A.8.2, A.8.3."
+        },
+        {
+          "control_id": "AGC-09",
+          "name": "Logging and traceability enabled",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 12 (record-keeping), Art. 19",
+            "nist_ai_rmf": "MEASURE 2.1, MANAGE 4.1",
+            "iso_42001": "A.6.2.8 (event logging)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-12",
+          "name": "AI incident response plan",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 73 (serious incident reporting)",
+            "nist_ai_rmf": "MANAGE 4.3, GOVERN 6.2",
+            "iso_42001": "A.10.4 (incident response)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-13",
+          "name": "Vendor AI risk assessment completed",
+          "status": "pass",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 25 (responsibilities along the AI value chain)",
+            "nist_ai_rmf": "GOVERN 6.1, MAP 4.1 (third-party risk)",
+            "iso_42001": "A.10.2, A.10.3 (suppliers and third parties)"
+          },
+          "remediation": null
+        },
+        {
+          "control_id": "AGC-14",
+          "name": "DPIA completed for personal-data systems",
+          "status": "not_applicable",
+          "severity": null,
+          "frameworks": {
+            "eu_ai_act": "Art. 27 (fundamental rights impact assessment)",
+            "nist_ai_rmf": "MAP 3.1, MEASURE 2.10 (privacy)",
+            "iso_42001": "A.7.4"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+name: AI Governance Gate
+
+# Compliance-as-code in CI: every change to the AI inventory, control catalog,
+# or engine re-runs the assessment. The build FAILS if any critical governance
+# finding exists — shifting AI compliance left, exactly like a security gate.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - "inventory/**"
+      - "frameworks/**"
+      - "src/**"
+      - "tests/**"
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unit tests
+        run: pytest tests/ -v
+
+      - name: Run governance gate (block on critical findings)
+        run: python src/main.py gate --fail-on critical
+
+      - name: Generate assessment artifacts
+        if: always()
+        run: python src/main.py assess
+
+      - name: Upload evidence pack + dashboard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: argus-governance-artifacts
+          path: output/
+          retention-days: 90

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Argus — AI Governance Dashboard</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f172a;color:#e2e8f0;
+       margin:0;padding:32px}
+  h1{font-size:22px} h2{font-size:16px;margin-top:32px;color:#94a3b8}
+  .muted{color:#94a3b8;font-size:12px}
+  .tiles{display:flex;gap:16px;flex-wrap:wrap}
+  .tile{background:#1e293b;border-radius:12px;padding:20px 28px;min-width:140px}
+  .num{font-size:30px;font-weight:700} .lbl{color:#94a3b8;font-size:12px;margin-top:4px}
+  table{border-collapse:collapse;width:100%;margin-top:8px;background:#1e293b;border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid #334155;font-size:14px;vertical-align:top}
+  th{color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  .bar{background:#334155;border-radius:999px;height:8px;width:160px;margin-bottom:4px}
+  .bar div{height:8px;border-radius:999px}
+  footer{margin-top:32px;color:#64748b;font-size:12px}
+</style></head><body>
+<h1>Argus — AI Governance &amp; Compliance Dashboard</h1>
+<p class="muted">Generated 2026-07-07T01:39:20.229402+00:00 · EU AI Act (2024/1689) · NIST AI RMF 1.0 · ISO/IEC 42001:2023</p>
+<div class="tiles"><div class="tile"><div class="num">5</div><div class="lbl">AI systems</div></div><div class="tile"><div class="num">84%</div><div class="lbl">Avg compliance</div></div><div class="tile"><div class="num">9</div><div class="lbl">Open findings</div></div><div class="tile"><div class="num">2</div><div class="lbl">Critical findings</div></div></div>
+
+<h2>Risk tier distribution (EU AI Act)</h2>
+<table><tr><th>Tier</th><th>Systems</th></tr><tr><td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td><td>2</td></tr><tr><td><span style="background:#d97706;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">LIMITED</span></td><td>2</td></tr><tr><td><span style="background:#16a34a;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">MINIMAL</span></td><td>1</td></tr></table>
+
+<h2>System compliance posture</h2>
+<table><tr><th>System</th><th>Risk tier</th><th>Compliance</th><th>Open findings</th></tr>
+        <tr>
+          <td><b>AIS-001</b><br><span class="muted">TalentRank Resume Screener</span></td>
+          <td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td>
+          <td><div class="bar"><div style="width:93%;background:#16a34a"></div></div>
+              93% (13/14)</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><b>AIS-002</b><br><span class="muted">CreditSense Loan Scorer</span></td>
+          <td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td>
+          <td><div class="bar"><div style="width:57%;background:#dc2626"></div></div>
+              57% (8/14)</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td><b>AIS-003</b><br><span class="muted">SupportGenie Customer Chatbot</span></td>
+          <td><span style="background:#d97706;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">LIMITED</span></td>
+          <td><div class="bar"><div style="width:86%;background:#d97706"></div></div>
+              86% (6/7)</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><b>AIS-004</b><br><span class="muted">FraudNet Transaction Monitor</span></td>
+          <td><span style="background:#16a34a;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">MINIMAL</span></td>
+          <td><div class="bar"><div style="width:100%;background:#16a34a"></div></div>
+              100% (1/1)</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td><b>AIS-005</b><br><span class="muted">DevPilot Internal Code Assistant</span></td>
+          <td><span style="background:#d97706;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">LIMITED</span></td>
+          <td><div class="bar"><div style="width:83%;background:#d97706"></div></div>
+              83% (5/6)</td>
+          <td>1</td>
+        </tr></table>
+
+<h2>Open findings register</h2>
+<table><tr><th>System</th><th>Control</th><th>Requirement</th><th>Severity</th><th>Legal basis</th></tr>
+<tr><td>AIS-001</td><td>AGC-15</td><td>Registered in EU high-risk database</td><td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td><td class='muted'>Art. 49, Art. 71 (EU database registration)</td></tr><tr><td>AIS-002</td><td>AGC-02</td><td>Documented human oversight mechanism</td><td><span style="background:#7f1d1d;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">CRITICAL</span></td><td class='muted'>Art. 14 (human oversight)</td></tr><tr><td>AIS-002</td><td>AGC-03</td><td>No fully automated adverse decisions</td><td><span style="background:#7f1d1d;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">CRITICAL</span></td><td class='muted'>Art. 14; GDPR Art. 22</td></tr><tr><td>AIS-002</td><td>AGC-05</td><td>Bias / fairness evaluation completed</td><td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td><td class='muted'>Art. 10(2)(f), Art. 15</td></tr><tr><td>AIS-002</td><td>AGC-11</td><td>Post-market drift monitoring</td><td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td><td class='muted'>Art. 72 (post-market monitoring)</td></tr><tr><td>AIS-002</td><td>AGC-15</td><td>Registered in EU high-risk database</td><td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td><td class='muted'>Art. 49, Art. 71 (EU database registration)</td></tr><tr><td>AIS-002</td><td>AGC-07</td><td>Model card published</td><td><span style="background:#d97706;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">MEDIUM</span></td><td class='muted'>Art. 11 + Annex IV (technical documentation)</td></tr><tr><td>AIS-003</td><td>AGC-06</td><td>AI transparency notice to users</td><td><span style="background:#dc2626;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">HIGH</span></td><td class='muted'>Art. 50 (transparency obligations)</td></tr><tr><td>AIS-005</td><td>AGC-07</td><td>Model card published</td><td><span style="background:#d97706;color:#fff;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600">MEDIUM</span></td><td class='muted'>Art. 11 + Annex IV (technical documentation)</td></tr></table>
+
+<footer>Argus AI-GRC Engine — compliance-as-code demo. Evidence integrity: see evidence_pack/MANIFEST.json.</footer>
+</body></html>

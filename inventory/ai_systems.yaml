@@ -1,0 +1,217 @@
+# =============================================================================
+# Argus AI System Inventory — the single source of truth for AI governance.
+# Every AI system in the org MUST be registered here before deployment.
+# Schema is validated by src/policy_engine.py; risk tier is computed by
+# src/risk_tiering.py (EU AI Act Art. 5, Annex III, Art. 50 logic).
+# =============================================================================
+
+ai_systems:
+  - id: AIS-001
+    name: TalentRank Resume Screener
+    owner: people-ops@acme.example
+    business_unit: Human Resources
+    purpose: Ranks inbound job applications and recommends candidates for interview.
+    model_type: gradient-boosted classifier (in-house)
+    role: provider          # provider | deployer (EU AI Act obligations differ)
+    lifecycle_stage: production
+    domain: employment      # drives Annex III high-risk classification
+    interacts_with_humans: false
+    generates_synthetic_content: false
+    uses_personal_data: true
+    automated_decision_no_human_review: false
+    prohibited_practice: none
+    human_oversight:
+      documented: true
+      mechanism: "Recruiter reviews every ranked shortlist before outreach"
+    data_governance:
+      training_data_documented: true
+      provenance_recorded: true
+      bias_evaluation_completed: true
+      bias_evaluation_date: 2026-04-18
+    transparency:
+      users_notified_of_ai: true
+      model_card_published: true
+    robustness:
+      accuracy_metrics_tracked: true
+      adversarial_testing: false
+    monitoring:
+      logging_enabled: true
+      log_retention_months: 12
+      drift_monitoring: true
+      incident_response_plan: true
+    third_party:
+      is_vendor_model: false
+      vendor: null
+      vendor_risk_assessment: null
+    documentation:
+      technical_documentation: true
+      dpia_completed: true
+      registered_in_eu_database: false   # gap — required for Annex III providers
+
+  - id: AIS-002
+    name: CreditSense Loan Scorer
+    owner: risk-analytics@acme.example
+    business_unit: Financial Services
+    purpose: Scores consumer creditworthiness for loan approval decisions.
+    model_type: XGBoost ensemble (in-house)
+    role: provider
+    lifecycle_stage: production
+    domain: credit_scoring
+    interacts_with_humans: false
+    generates_synthetic_content: false
+    uses_personal_data: true
+    automated_decision_no_human_review: true   # gap — Art. 14 human oversight
+    prohibited_practice: none
+    human_oversight:
+      documented: false
+      mechanism: null
+    data_governance:
+      training_data_documented: true
+      provenance_recorded: true
+      bias_evaluation_completed: false          # gap
+      bias_evaluation_date: null
+    transparency:
+      users_notified_of_ai: true
+      model_card_published: false               # gap
+    robustness:
+      accuracy_metrics_tracked: true
+      adversarial_testing: false
+    monitoring:
+      logging_enabled: true
+      log_retention_months: 24
+      drift_monitoring: false                   # gap
+      incident_response_plan: true
+    third_party:
+      is_vendor_model: false
+      vendor: null
+      vendor_risk_assessment: null
+    documentation:
+      technical_documentation: true
+      dpia_completed: true
+      registered_in_eu_database: false
+
+  - id: AIS-003
+    name: SupportGenie Customer Chatbot
+    owner: cx-platform@acme.example
+    business_unit: Customer Experience
+    purpose: LLM chatbot answering customer product questions on the website.
+    model_type: GPT-4-class LLM (vendor API, RAG over product docs)
+    role: deployer
+    lifecycle_stage: production
+    domain: customer_service
+    interacts_with_humans: true
+    generates_synthetic_content: true
+    uses_personal_data: true
+    automated_decision_no_human_review: false
+    prohibited_practice: none
+    human_oversight:
+      documented: true
+      mechanism: "Escalation to human agent on low confidence or user request"
+    data_governance:
+      training_data_documented: false     # vendor model — base data unknown
+      provenance_recorded: true           # RAG corpus provenance tracked
+      bias_evaluation_completed: true
+      bias_evaluation_date: 2026-02-10
+    transparency:
+      users_notified_of_ai: false         # gap — Art. 50 transparency
+      model_card_published: true
+    robustness:
+      accuracy_metrics_tracked: true
+      adversarial_testing: true           # prompt-injection red team done
+    monitoring:
+      logging_enabled: true
+      log_retention_months: 6
+      drift_monitoring: true
+      incident_response_plan: true
+    third_party:
+      is_vendor_model: true
+      vendor: OpenAI (via Azure)
+      vendor_risk_assessment: completed
+    documentation:
+      technical_documentation: true
+      dpia_completed: true
+      registered_in_eu_database: false
+
+  - id: AIS-004
+    name: FraudNet Transaction Monitor
+    owner: fraud-eng@acme.example
+    business_unit: Payments
+    purpose: Flags anomalous transactions for fraud-team review in real time.
+    model_type: autoencoder anomaly detector (in-house)
+    role: provider
+    lifecycle_stage: production
+    domain: fraud_detection
+    interacts_with_humans: false
+    generates_synthetic_content: false
+    uses_personal_data: true
+    automated_decision_no_human_review: false
+    prohibited_practice: none
+    human_oversight:
+      documented: true
+      mechanism: "All flags routed to fraud analyst queue; no auto-blocking"
+    data_governance:
+      training_data_documented: true
+      provenance_recorded: true
+      bias_evaluation_completed: true
+      bias_evaluation_date: 2026-05-02
+    transparency:
+      users_notified_of_ai: true
+      model_card_published: true
+    robustness:
+      accuracy_metrics_tracked: true
+      adversarial_testing: true
+    monitoring:
+      logging_enabled: true
+      log_retention_months: 36
+      drift_monitoring: true
+      incident_response_plan: true
+    third_party:
+      is_vendor_model: false
+      vendor: null
+      vendor_risk_assessment: null
+    documentation:
+      technical_documentation: true
+      dpia_completed: true
+      registered_in_eu_database: false
+
+  - id: AIS-005
+    name: DevPilot Internal Code Assistant
+    owner: platform-eng@acme.example
+    business_unit: Engineering
+    purpose: IDE code-completion assistant for internal developers.
+    model_type: Claude-class LLM (vendor API)
+    role: deployer
+    lifecycle_stage: pilot
+    domain: internal_productivity
+    interacts_with_humans: true
+    generates_synthetic_content: true
+    uses_personal_data: false
+    automated_decision_no_human_review: false
+    prohibited_practice: none
+    human_oversight:
+      documented: true
+      mechanism: "Developer reviews all suggestions; mandatory code review"
+    data_governance:
+      training_data_documented: false
+      provenance_recorded: false          # acceptable at minimal tier
+      bias_evaluation_completed: false
+      bias_evaluation_date: null
+    transparency:
+      users_notified_of_ai: true
+      model_card_published: false
+    robustness:
+      accuracy_metrics_tracked: false
+      adversarial_testing: false
+    monitoring:
+      logging_enabled: true
+      log_retention_months: 3
+      drift_monitoring: false
+      incident_response_plan: true
+    third_party:
+      is_vendor_model: true
+      vendor: Anthropic
+      vendor_risk_assessment: completed
+    documentation:
+      technical_documentation: true
+      dpia_completed: false
+      registered_in_eu_database: false

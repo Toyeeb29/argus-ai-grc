@@ -1,0 +1,10 @@
+system_id,system_name,risk_tier,control_id,control_name,severity,eu_ai_act_ref
+AIS-001,"TalentRank Resume Screener",high,AGC-15,"Registered in EU high-risk database",high,"Art. 49, Art. 71 (EU database registration)"
+AIS-002,"CreditSense Loan Scorer",high,AGC-02,"Documented human oversight mechanism",critical,"Art. 14 (human oversight)"
+AIS-002,"CreditSense Loan Scorer",high,AGC-03,"No fully automated adverse decisions",critical,"Art. 14; GDPR Art. 22"
+AIS-002,"CreditSense Loan Scorer",high,AGC-05,"Bias / fairness evaluation completed",high,"Art. 10(2)(f), Art. 15"
+AIS-002,"CreditSense Loan Scorer",high,AGC-11,"Post-market drift monitoring",high,"Art. 72 (post-market monitoring)"
+AIS-002,"CreditSense Loan Scorer",high,AGC-15,"Registered in EU high-risk database",high,"Art. 49, Art. 71 (EU database registration)"
+AIS-002,"CreditSense Loan Scorer",high,AGC-07,"Model card published",medium,"Art. 11 + Annex IV (technical documentation)"
+AIS-003,"SupportGenie Customer Chatbot",limited,AGC-06,"AI transparency notice to users",high,"Art. 50 (transparency obligations)"
+AIS-005,"DevPilot Internal Code Assistant",limited,AGC-07,"Model card published",medium,"Art. 11 + Annex IV (technical documentation)"
