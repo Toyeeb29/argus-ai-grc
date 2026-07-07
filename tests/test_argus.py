@@ -106,7 +106,10 @@ def test_full_assessment_runs_on_sample_inventory():
 
 
 def test_gate_blocks_on_critical_findings():
-    report = run_assessment(INVENTORY, CONTROLS)
+    controls = load_controls(CONTROLS)
+    bad = _base_system(domain="employment",
+                       human_oversight={"documented": False, "mechanism": None})
+    report = {"assessments": [assess_system(bad, controls)]}
     ok, msg = gate(report, fail_on="critical")
-    assert ok is False                     # CreditSense has a critical gap
-    assert "AGC-03" in msg
+    assert ok is False
+    assert "AGC-02" in msg
